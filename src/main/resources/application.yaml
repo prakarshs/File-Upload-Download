@@ -7,8 +7,8 @@ spring:
     username: root
     password: root
   jpa:
-    hiberante:
-      ddl-auto: update
-  properties:
     hibernate:
-      dialect: org.hibernate.dialect.MySQLDialect
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
