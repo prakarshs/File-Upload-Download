@@ -42,7 +42,7 @@ public class FileUploadDownloadController {
 
         return ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType(fileEntity.getFileType()))
-                .header(HttpHeaders.CONTENT_DISPOSITION,"attachment; fileName="+"fileDownload"+fileEntity.getFileId())
+                .header(HttpHeaders.CONTENT_DISPOSITION,"attachment; filename="+"Downloaded_"+fileEntity.getFileName())
                 .body(new ByteArrayResource(fileEntity.getFileContent()));
     }
 
