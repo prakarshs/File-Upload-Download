@@ -21,4 +21,8 @@ public class FileEntity {
     private String fileName;
     private Long fileSize;
     private Date fileUploadTime;
+
+    @Lob
+    @Column(name = "file_data", columnDefinition="MEDIUMBLOB")
+    private byte[] fileContent;
 }
