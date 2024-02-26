@@ -37,6 +37,7 @@ public class FileUploadDownloadServiceIMPL implements FileUploadDownloadService{
 
         return FileResponse.builder()
                 .fileName(fileEntity.getFileName())
+                .fileType(fileEntity.getFileType())
                 .fileUploadTime(fileEntity.getFileUploadTime())
                 .fileId(fileEntity.getFileId())
                 .fileSize(fileEntity.getFileSize())
