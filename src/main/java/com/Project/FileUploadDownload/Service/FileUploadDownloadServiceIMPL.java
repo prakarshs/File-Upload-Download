@@ -5,6 +5,7 @@ import com.Project.FileUploadDownload.Model.FileResponse;
 import com.Project.FileUploadDownload.Repository.FileUploadDownloadRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -28,6 +29,7 @@ public class FileUploadDownloadServiceIMPL implements FileUploadDownloadService{
                 .fileName(fileName)
                 .fileSize(file.getSize())
                 .fileUploadTime(Date.from(Instant.now()))
+                .fileType(file.getContentType())
                 .fileContent(file.getBytes())
                 .build();
 
@@ -40,6 +42,12 @@ public class FileUploadDownloadServiceIMPL implements FileUploadDownloadService{
                 .fileSize(fileEntity.getFileSize())
                 .downloadUrl(generateUrl(request)+fileEntity.getFileId())
                 .build();
+    }
+
+    @Override
+    public FileEntity fetch(Long fileId) {
+
+        return fileUploadDownloadRepository.findById(fileId).orElseThrow(()->new RuntimeException("File ID doesn't exist."));
     }
 
     private String generateUrl(HttpServletRequest request) {

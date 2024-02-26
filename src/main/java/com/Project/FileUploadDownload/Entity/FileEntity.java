@@ -20,6 +20,7 @@ public class FileEntity {
     private Long fileId;
     private String fileName;
     private Long fileSize;
+    private String fileType;
     private Date fileUploadTime;
 
     @Lob
